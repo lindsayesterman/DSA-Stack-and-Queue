@@ -28,3 +28,13 @@ class Queue {
     return node.value;
   }
 }
+
+function main () {
+  let starTrekQ = new Queue 
+  starTrekQ.enqueue("Kirk")
+  starTrekQ.enqueue("Spock")
+  starTrekQ.enqueue("Uhura")
+  starTrekQ.enqueue("Sulu")
+  starTrekQ.enqueue("Checkov")
+  starTrekQ.deenqueue("Spock")
+}

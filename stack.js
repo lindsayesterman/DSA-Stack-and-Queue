@@ -44,6 +44,46 @@ class Stack {
       current = current.next;
     }
   }
+  is_palindrome(s) {
+    s = s.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
+    let reverse = new Stack();
+    for (let i = 0; i < s.length; i++) {
+      reverse.push(s.charAt(i));
+    }
+    for (let j = 0; j < s.length; j++) {
+      if (s[j] === reverse.pop()) continue;
+      else return false;
+    }
+    return true;
+  }
+  matchParentheses(str) {
+    let newStack = new Stack();
+    let counter = 0;
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] === "(") {
+        newStack.push(str[i]);
+        counter++;
+      }
+      if (str[i] === ")" && !newStack.top) {
+        return new Error(`Missing an open parenthesis at ${counter}`);
+      }
+      if (str[i] === ")") {
+        newStack.pop();
+        counter++;
+      }
+      if (newStack.top === "(") {
+        return new Error(`Missing closing parenthesis at ${counter}`);
+      }
+    }
+    return true;
+  }
+  sortStack(stack) {
+    let holderStack = new Stack();
+    if (!stack.top) {
+      return;
+    }
+    for (let i = 0; i < stack.length; i++) {}
+  }
 }
 
 function main() {
@@ -53,7 +93,7 @@ function main() {
   starTrek.push("McCoy");
   starTrek.push("Scotty");
   console.log(starTrek);
-  console.log('this is peek: '+ starTrek.peek(starTrek));
+  console.log("this is peek: " + starTrek.peek(starTrek));
   console.log(starTrek.isEmpty());
   starTrek.pop("McCoy");
   starTrek.display(starTrek);

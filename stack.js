@@ -27,4 +27,36 @@ class Stack {
     this.top = node.next;
     return node.data;
   }
+  peek(stack) {
+    return stack.top.data;
+  }
+  isEmpty() {
+    if (this.top === null) {
+      console.log("stack is empty");
+    } else {
+      console.log("stack is not empty");
+    }
+  }
+  display(stack) {
+    let current = stack.top;
+    while (current !== null) {
+      console.log(current.data);
+      current = current.next;
+    }
+  }
 }
+
+function main() {
+  let starTrek = new Stack();
+  starTrek.push("Kirk");
+  starTrek.push("Spock");
+  starTrek.push("McCoy");
+  starTrek.push("Scotty");
+  console.log(starTrek);
+  console.log('this is peek: '+ starTrek.peek(starTrek));
+  console.log(starTrek.isEmpty());
+  starTrek.pop("McCoy");
+  starTrek.display(starTrek);
+}
+
+main();
